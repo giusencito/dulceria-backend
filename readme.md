@@ -43,8 +43,8 @@ Este proyecto implementa un **flujo completo de compra de dulces**  con **Fronte
    - Modal con detalle de compras
    - Aparece solo cuando esta logueado con Google
    
-6**Cierre de Sesión**
-- Accesible si inició sesión con Google
+6. **Cierre de Sesión**
+   - Accesible si inició sesión con Google
 
 
 ---
@@ -131,11 +131,15 @@ CALL sp_create_order(
 ## Endpoints
 
 ### OrderController
-   - email/{email}   Consiste en obtener ordenes segun el correo
-   - orderId/{orderId}  Consiste en obtener ordenes según orderId
+   - GET /api/v1/orders/email/{email}   
+    Consiste en obtener ordenes segun el correo
+   - GET /api/v1/orders/{orderId}  
+    Consiste en obtener ordenes según orderId
 ### PaymentController
-   - check Valida la compra con PAYUP
-   - confirm Insertar la orden y su detalle en la base de datos
+   - POST /api/v1/payments/check  
+     Valida la compra con PAYUP
+   - POST /api/v1/payments/confirm  
+     Insertar la orden y su detalle en la base de datos
 ---
 
 ## 💳 Integración PayU (Pruebas)
@@ -147,7 +151,7 @@ CALL sp_create_order(
 - Account ID
 
 ### Respuesta
-Se obtiene:
+Solo necesitamos:
 - transactionId
 - operationDate
 - state
@@ -155,7 +159,7 @@ Se obtiene:
 
 ## 🔁 Comunicación entre Microservicios
 
-- Órdenes → Productos
+- Complete → CandyStore
 - RestTemplate
 - Token JWT propagado vía Authorization Header
 
@@ -200,7 +204,8 @@ CALL sp_get_premieres(
 ## Endpoints
 
 ### PremiereController
-- premieres   Consiste en obtener premieres
+- GET api/v1/premieres   
+Consiste en obtener premieres
 
 ### Adicional
 - Se cuenta con una funcion para al momento de compilar se regsitren premieres base
@@ -250,15 +255,17 @@ CALL sp_get_products(
 ## Endpoints
 
 ### ProductoController
-- products   Consiste en obtener productos
-- ids  Obtener los productos según los ids
-
-### AuthController 
--login Generar token  si es una cuenta de Google o Invitado
+- GET api/v1/products   
+Consiste en obtener productos
+- POST api/v1/products/ids  
+Obtener los productos según los ids
+### AuthController
+- POST api/v1/auth/login  
+  Generar token  si es una cuenta de Google o Invitado
 
 ### Adicional
 - Se decidio para este caso colocar funciones en relación a generar Token este Microservicio al ser el primero que tiene que ir gestionando la orden
-
+- Se cuenta con una funcion para al momento de compilar se regsitren productos base
 
 ## 🧪 Swagger
 

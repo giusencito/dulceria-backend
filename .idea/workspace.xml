@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8517e391-215a-4bc4-9094-cd488d06a587" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme_proyecto_dulceria.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +52,22 @@
       <workItem from="1770440008361" duration="956000" />
       <workItem from="1770441163885" duration="7000" />
       <workItem from="1770441207083" duration="5806000" />
-      <workItem from="1770468535962" duration="3216000" />
+      <workItem from="1770468535962" duration="4288000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
