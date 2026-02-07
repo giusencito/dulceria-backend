@@ -37,7 +37,7 @@ Este proyecto implementa un **flujo completo de compra de dulces**  con **Fronte
    - Integración PayU
    - Registro de orden + detalles
 
-5. **Órdenes del Usuario** (Adicional)
+5. **Ordenes del Usuario** (Adicional)
    - Accesible si inició sesión con Google
    - Listado de Ordenes en cards
    - Modal con detalle de compras
