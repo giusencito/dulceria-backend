@@ -1,4 +1,4 @@
-# 🍬 Proyecto  – Flujo Completo de Compra
+# Proyecto  – Flujo Completo de Compra
 
 Este proyecto implementa un **flujo completo de compra de dulces**  con **Frontend en React + TypeScript** y **Backend en Spring Boot**, integrando **autenticación JWT / Google Sign-In**, **pagos con PayU (sandbox)** y **persistencia de órdenes mediante Stored Procedures en MySQL**.
 
@@ -11,7 +11,7 @@ Este proyecto implementa un **flujo completo de compra de dulces**  con **Fronte
 
 ---
 
-## 🧩 Funcionalidades
+## Funcionalidades
 
 ### Flujo del Usuario
 1. **Home**
@@ -49,7 +49,7 @@ Este proyecto implementa un **flujo completo de compra de dulces**  con **Fronte
 
 ---
 
-## 🎨 Frontend (React + TypeScript)
+## Frontend (React + TypeScript)
 
 ### Tecnologías
 - React 19
@@ -62,7 +62,7 @@ Este proyecto implementa un **flujo completo de compra de dulces**  con **Fronte
 - @react-oauth/google
 
 
-## 🔐 Autenticación
+## Autenticación
 
 - Google OAuth
 - JWT generado por backend
@@ -75,7 +75,7 @@ Authorization: Bearer <token>
 
 
 
-## 🍭 Backend – Microservicio Complete
+## Backend – Microservicio Complete
 
 ### Tecnologías
 - Spring Boot 
@@ -106,7 +106,7 @@ Clave compuesta con `@EmbeddedId`.
 
 ---
 
-## 🗄️ Stored Procedures
+## 🗄Stored Procedures
 
 ### Crear Orden + Detalles
 
@@ -142,7 +142,7 @@ CALL sp_create_order(
      Insertar la orden y su detalle en la base de datos
 ---
 
-## 💳 Integración PayU (Pruebas)
+## Integración PayU (Pruebas)
 
 ### Datos Usados
 - API Login
@@ -157,7 +157,7 @@ Solo necesitamos:
 - state
 ---
 
-## 🔁 Comunicación entre Microservicios
+## Comunicación entre Microservicios
 
 - Complete → CandyStore
 - RestTemplate
@@ -165,7 +165,7 @@ Solo necesitamos:
 
 ---
 
-## 🧪 Swagger
+## Swagger
 
 Disponible en:
 ```
@@ -177,7 +177,7 @@ Incluye autenticación JWT.
 ---
 
 
-## 🍭 Backend – Microservicio Premieres
+## Backend – Microservicio Premieres
 
 ### Tecnologías
 - Spring Boot
@@ -193,7 +193,7 @@ Incluye autenticación JWT.
 - imageUrl
 - description
 
-## 🗄️ Stored Procedures
+## 🗄Stored Procedures
 
 ### Obtener los Premieres
 
@@ -218,7 +218,7 @@ Disponible en:
 http://localhost:8081/swagger-ui/index.html
 ```
 
-## 🍭 Backend – Microservicio CandyStore
+## Backend – Microservicio CandyStore
 
 ### Tecnologías
 - Spring Boot
@@ -236,7 +236,7 @@ http://localhost:8081/swagger-ui/index.html
 - description
 - price
 
-## 🗄️ Stored Procedures
+## Stored Procedures
 
 ### Obtener los Productos
 
@@ -267,7 +267,7 @@ Obtener los productos según los ids
 - Se decidio para este caso colocar funciones en relación a generar Token este Microservicio al ser el primero que tiene que ir gestionando la orden
 - Se cuenta con una funcion para al momento de compilar se regsitren productos base
 
-## 🧪 Swagger
+## Swagger
 
 Disponible en:
 ```
@@ -279,10 +279,12 @@ Incluye autenticación JWT.
 
 ---
 
-## Alcaraciones
+## Consideraciones
 - Login con Google
   - Actualmente esta con usuarios de pruebas definidos comunicarse conmigo en caso se quiera probar para agendar un correo
   - Uri tambien esta definido en caso no deje avanzar comunicar uri que se esta usando para agregarlo
+- AuditModel
+  - Para las entidades se genero atributos created_at y updated_at como buena practica
 
 
 ---
