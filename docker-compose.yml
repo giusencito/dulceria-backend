@@ -1,0 +1,89 @@
+version: '3'
+services:
+  premiere-db:
+    image: mysql:8.4
+    container_name: premiere-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: premieredb
+      MYSQL_USER: premiere
+      MYSQL_PASSWORD: premiere123
+    ports:
+      - "3308:3306"
+    volumes:
+      - premiere-db-data:/var/lib/mysql
+
+  candystore-db:
+    image: mysql:8.4
+    container_name: candystore-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: candystoredb
+      MYSQL_USER: candystore
+      MYSQL_PASSWORD: candystore123
+    ports:
+      - "3307:3306"
+    volumes:
+      - candystore-db-data:/var/lib/mysql
+
+  complete-db:
+    image: mysql:8.4
+    container_name: complete-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: completedb
+      MYSQL_USER: complete
+      MYSQL_PASSWORD: complete123
+    ports:
+      - "3305:3306"
+    volumes:
+      - complete-db-data:/var/lib/mysql
+
+  premieres-service:
+    build: ./premieres
+    container_name: premieres-service
+    depends_on:
+      - premiere-db
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://premiere-db:3306/premieredb?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: premiere
+      SPRING_DATASOURCE_PASSWORD: premiere123
+
+  candystore-service:
+    build: ./candystore
+    container_name: candystore-service
+    depends_on:
+      - candystore-db
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://candystore-db:3306/candystoredb?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: candystore
+      SPRING_DATASOURCE_PASSWORD: candystore123
+
+  complete-service:
+    build: ./complete
+    container_name: complete-service
+    depends_on:
+      - complete-db
+      - candystore-service
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://complete-db:3306/completedb?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: complete
+      SPRING_DATASOURCE_PASSWORD: complete123
+      CLIENT_SERVICE_URL: http://candystore-service:8082/api/v1/products/ids
+
+volumes:
+  premiere-db-data:
+  candystore-db-data:
+  complete-db-data:
